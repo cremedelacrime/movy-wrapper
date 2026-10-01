@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>Movy</title>
+  <style>
+    html,body { margin:0; width:100%; height:100%; background:#000; overflow:hidden; }
+    body {
+      padding-top: env(safe-area-inset-top);
+      box-sizing: border-box;
+    }
+    #frame {
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+      background:#000;
+    }
+    #blocked {
+      display:none;
+      color:white;
+      font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+      padding:24px;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="frame"
+    src="https://www.movy.sx/"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowfullscreen></iframe>
+
+  <div id="blocked">
+    <h2>Movy couldn't be embedded</h2>
+    <p>If you see this instead of Movy, the site prevents iframe embedding.
+    A standalone wrapper cannot override that browser security restriction.</p>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js');
+    }
+  </script>
+</body>
+</html>
